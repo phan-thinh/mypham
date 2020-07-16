@@ -1,0 +1,160 @@
+﻿@using ShopMyPham.Models;
+@model IEnumerable<SanPhamGH>
+@{
+    ViewBag.Title = "Giỏ hàng";
+    Layout = "~/Views/_LayoutTrangChu.cshtml";
+}
+@section Meta{
+    <meta property="og:title" content="Giỏ hàng của bạn" />
+    <meta property="og:description" content="Giỏ hàng của bạn" />
+    <meta name="keywords" content="Giỏ hàng của bạn" />
+    <meta name="description" content="Giỏ hàng của bạn" />
+}
+
+<h1 style="border-bottom:solid 1px; padding:5px 5px 5px 5px;">Giỏ hàng của bạn:</h1>
+<br />
+<form action="/Giohang/GioHang" method="post">
+    <div class="Cart-info">
+        <table>
+            <thead>
+                <tr>
+                    <td style="display:none;">Mã Nước Hoa</td>
+                    <td>Hình Sản Phẩm</td>
+                    <td>Tên Sản Phẩm</td>
+                    <td>Số Lượng Sản Phẩm</td>
+                    <td>Đơn Giá</td>
+                    <td>Tổng Tiền</td>
+                </tr>
+            </thead>
+            <tbody>
+                @{double TongTien = 0; }
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td id="MaNuocHoa" name="MaNuocHoa" style="display:none;">@item.MaSP</td>
+                        <td><a href="/ViewNuocHoa/ChiTietNuocHoa?MaNuocHoa=@item.MaSP"><img src="~/Content/Images/product/@item.AnhSP" /></a></td>
+                        <td>@item.TenSP</td>
+                        <td><input name="txtsl" type="number" min="1" required class="txtSLGH" value="@item.SoLuong" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" /><a class="fa fa-upload btn-Update" onclick="CapNhat(@item.MaSP)" aria-hidden="true"></a><a class="fa fa-trash-o btn-Delete" aria-hidden="true" onclick="XoaSP(@item.MaSP)"></a></td>
+                        <td><span id="DonGia"> @string.Format("{0:0,0}", item.GiaSP)</span></td>
+                        <td>@string.Format("{0:0,0}", item.TongTien)</td>
+                    </tr>
+                    TongTien += @item.GiaSP * @item.SoLuong;
+                }
+
+            </tbody>
+        </table>
+    </div>
+    <br />
+    <div id="ThanhToan">
+        <br />
+        <div id="frm-thanhtoan" style="border: 1px solid #E6E6FA;display: block;background: #E6E6FA;">
+
+            <p>Tiến trình thanh toán</p>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Tên người nhận</td>
+                        <td><input type="text" required name="tennguoinhan" id="tennguoinhan" /></td>
+                    </tr>
+                    <tr>
+                        <td>Địa chỉ nhận hàng</td>
+                        <td><input type="text" required name="diachinhanhang" id="diachinhanhang" /></td>
+                    </tr>
+                    <tr>
+                        <td>Điện thoại nhận hàng</td>
+                        <td><input type="number" min="10" required name="dienthoainhanhang" id="dienthoainhanhang" style="width: 361px;height: 24px;" /></td>
+                    </tr>
+                    <tr>
+                        <td>Ngày nhận hàng</td>
+                        <td>
+                            <div id="ngaynhanhang">
+                                @string.Format("{0:dd/MM/yyyy}", @Session["NgayNhanHang"])
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        @if (@Session["giamgia"] != null)
+                        {
+                            <td>Tổng tiền cần thanh toán là:@Session["TongTien1"] VND</td>
+                        }
+                        else
+                        {
+                            <td>Tổng tiền cần thanh toán: @Session["TongTien"] VNĐ</td>
+                        }
+                    </tr>
+                </tbody>
+            </table>
+            <input id="To" style="visibility:hidden" name="To" type="text" value="@Session["Email"]">
+            <input id="Subject" style="visibility:hidden" name="Subject" type="text" value="Đơn hàng nước hoa của bạn như sau:">
+
+            @*@foreach (var dg in (IList<ShopMyPham.Models.DonHang>)ViewData["dondathang"])
+            {
+                <textarea style="visibility:hidden" cols="20" id="Body" name="Body" rows="2">Xin chào @dg.TenNguoiNhan
+                Mã số đợn hàng của bạn là: @Session["Madh"]
+                Tổng tiền: @dg.TriGia   
+                Sản phẩm đã mua: @foreach (var item in (IList<ShopMyPham.Models.ChiTietDonHang>)ViewData["tennuochoa"]){    @item.NuocHoa.TenNuocHoa}
+                Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất. Cảm ơn bạn đã ủng hộ ShopCaPhe, chúc bạn thật nhiều sức khỏe !
+            </textarea>
+            }*@
+            <input onclick="DatHang();" type="submit" value="Đặt hàng" />
+        </div>
+    </div>
+</form>
+
+<br />
+<div id="TongTien" style="height:70px;">
+    <h2>Tổng tiền:<span> @Session["TongTien"]</span>VND</h2><p style="float:right;"><input id="ThanhToan" onclick="ThanhToan()" type="submit" value="Thanh Toán" style="color:white; background-color:red;border-radius:3px;border-color:red;padding:10px 10px 10px 10px; font-size:15px;" /></p>
+</div>
+<div id="giamgia">
+    <form action="/Giohang/GiamGia" method="post">
+        @if (@Session["giamgia"] != null)
+        {
+            <div style="border: 1px solid #E6E6E6; width: 353px;background: #E6E6E6; margin-top:5px; text" class="alert alert-success" role="alert">
+                <h3 style="color:blue;">
+                    Code trị giá @Session["giamgia"]%: <del>@Session["TongTien"] VNĐ</del> - @Session["TongTien1"] VNĐ
+                </h3>
+                <br />
+                <h2>Tổng tiền cần thanh toán là:@Session["TongTien1"] VND</h2><br />
+            </div>
+
+        }
+        else
+        {
+            <div style="width:30%; margin-top:5px" class="alert alert-danger" role="alert">
+                @Session["loi"]
+            </div>
+        }
+        <h3>
+            <p>Mã giảm giá: <input type="text" required id="txtmagiamgia" name="txtmagiamgia" /><input id="GiamGia" onclick="GiamGia()" type="submit" value="Áp dụng" style="margin-left:15px;color:white; background-color:blue;border-radius:3px;border-color:blue;padding:5px 5px 5px 5px; font-size:15px;" /></p>
+        </h3>
+    </form>
+</div>
+<script type="text/javascript">
+
+    function ThanhToan() {
+        if ($('#MaNuocHoa').val() != null) {
+            $('#frm-thanhtoan').css('display', 'block');
+            $('#TongTien').css('display', 'none');
+            $('#giamgia').css('display', 'none');
+        }
+        else {
+            alert("Vui lòng chọn sản phẩm nước hoa cần mua trước khi thanh toán!")
+        }
+    }
+</script>
+<script type="text/javascript">
+    function GiamGia() {
+        if ($('#MaNuocHoa').val() != null) {
+            $('#frm-thanhtoan').css('display', 'block');
+            $('#TongTien').css('display', 'none');
+        }
+        else {
+            alert("Vui lòng chọn sản phẩm nước hoa cần mua trước khi nhập mã giảm giá!")
+        }
+        if (@Session["giamgia"]!= null)
+        {
+            $('#TongTien').css('display', 'none');
+        }
+    }
+</script>

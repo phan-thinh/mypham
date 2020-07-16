@@ -1,0 +1,90 @@
+﻿@using ShopMyPham.Models;
+@model List<NuocHoa>
+@{
+    ViewBag.Title = "Trang chủ";
+    Layout = "~/Views/_LayoutTrangChu.cshtml";
+}
+
+
+@section Meta{
+    <meta property="og:title" content="Trang chủ" />
+    <meta property="og:description" content="Mua nước hoa online, mua nuoc hoa online, shop nước hoa online" />
+    <meta name="keywords" content="Mua nước hoa online, mua nuoc hoa online, shop nước hoa online" />
+    <meta name="description" content="Mua nước hoa online giảm giá cùng hàng ngàn quà tặng, VPP, Wacom đủ chủng loại. Giao hàng nhanh, miễn phí vận chuyển, chế độ bảo hành & đổi trả hàng đầy đủ, chu đáo nhất!" />
+}
+    <h1 style="text-align:center;">Chào mừng bạn đã đến với ShopMyPhamOnline. Hãy nhanh tay tìm cho mình những lọ nước hoa cho riêng mình nhé.</h1><br />
+
+    <div class="mySlide">
+        <div>
+            <img class="SlidesImg" src="~/Content/Images/slide1.jpg" alt="slide1" />
+            <img class="SlidesImg" src="~/Content/Images/slide3.jpg" alt="slide3" />
+            <img class="SlidesImg" src="~/Content/Images/slide4.jpg" alt="slide4" />
+            <button type="button" id="btn-L"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+            <button type="button" id="btn-R"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+        </div>
+    </div>
+
+    <div class="box">
+        <div class="box-heading">
+            <h2>Sản Phẩm Mới</h2>
+        </div>
+        <div class="box-content">
+            <div class="box-product">
+                @{
+                    int i = 0;
+                }
+                @foreach (var item in Model)
+                {
+                    i++;
+                    <div>
+                        <a href="/ViewNuocHoa/ChiTietNuocHoa?MaNuocHoa=@item.MaNuocHoa">
+                            <div class="Images"><img src="~/Content/Images/product/@item.AnhBia" alt="@item.Keywords" /></div>
+                            <div class="Name">@item.TenNuocHoa</div>
+                            <div class="price">@string.Format("{0:0,0}", item.GiaBan) VND</div>
+                        </a>
+                        <div class="btn-cart">
+                            <input type="button" value="Thêm Vào Giỏ Hàng" onclick="DatHang(@item.MaNuocHoa)" />
+                        </div>
+                    </div>
+                    if (i == 10)
+                    {
+                        break;
+                    }
+                }
+
+            </div>
+        </div>
+        <div class="box-heading">
+            <h2>Sản Phẩm Nổi Bật</h2>
+        </div>
+        <div class="box-content">
+            <div class="box-product">
+                @{
+                    int j = 0;
+
+                }
+                @foreach (var item in Model)
+                {
+                    if (item.SoLuongTon <= 15)
+                    {
+                        j++;
+                        <div>
+                            <a href="/ViewNuocHoa/ChiTietNuocHoa?MaNuocHoa=@item.MaNuocHoa">
+                                <div class="Images"><img src="~/Content/Images/product/@item.AnhBia" alt="@item.Keywords" /></div>
+                                <div class="Name">@item.TenNuocHoa</div>
+                                <div class="price">@string.Format("{0:0,0}", item.GiaBan) VND</div>
+                            </a>
+                            <div class="btn-cart">
+                                <input type="button" value="Thêm Vào Giỏ Hàng" onclick="DatHang(@item.MaNuocHoa)" />
+                            </div>
+                        </div>
+                    }
+                    if (j == 10)
+                    {
+                        break;
+                    }
+                }
+
+            </div>
+        </div>
+    </div>

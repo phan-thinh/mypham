@@ -1,0 +1,45 @@
+﻿@using ShopMyPham.Models;
+@{
+                /**/
+
+                ViewBag.Title = "ThemDanhMucLoaiNuocHoa";
+                Layout = "~/Views/_LayoutTrangAd.cshtml";
+}
+
+<form action="/Admin/ThemDanhMucLoaiNuocHoa" method="post">
+    <div class="frm-ThemDanhMucSach">
+        <h1 style="border-bottom:1px solid; padding:5px 5px 5px 5px;"> Thêm Danh Mục Loại Nước Hoa </h1>
+        <table>
+            <tbody>
+                <tr>
+                    <td>Tên danh mục:</td>
+                    <td><input type="text" id="TenLoaiNuocHoa" name="TenLoaiNuocHoa" placeholder="Tên danh mục loại nước hoa" /></td>
+                </tr>
+                <tr>
+                    <td>Meta Keywords:</td>
+                    <td><textarea id="MetaKeywords" name="MetaKeywords" placeholder="Từ khóa"></textarea></td>
+                </tr>
+                <tr>
+                    <td>Meta Description:</td>
+                    <td><textarea id="MetaDescription" name="MetaDescription" placeholder="Mô tả danh mục nước hoa"></textarea></td>
+                </tr>
+                <tr>
+                    <td>Title:</td>
+                    <td><input type="text" id="Title" name="Title" placeholder="Tiêu đề" /></td>
+                </tr>
+                <tr>
+                    <td>Meta Title:</td>
+                    <td><textarea id="MetaTitle" name="MetaTitle" placeholder="Mo-ta-tieu-de"></textarea></td>
+                </tr>
+                <tr>
+                    <td>Thứ tự:</td>
+                    <td><input type="text" id="STT" name="STT" placeholder="Thứ tự xuất hiện" /></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br />
+    <div class="XuLi-DMS">
+        <a href="/Admin/DanhMucLoaiNuocHoa">Trở lại</a> <input type="submit" value="Tạo" name="Sub-Tao" id="Sub-Tao" />
+    </div>
+</form>

@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<html lang="vi" prefix="og: http://ogp.me/ns#" class="no-js smoothscroll">
+<head>
+    <!--Meta location-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="geo.region" content="VI" />
+    <meta name="geo.placename" content="Binh Duong" />
+    <meta name="geo.position" content="13.290403;108.426511" />
+    <meta name="ICBM" content="13.290403, 108.426511" />
+    <meta property="og:locale" content="vi_VN" />
+    <meta property="og:type" content="website" />
+    @RenderSection("Meta", false)
+    <!--EndMeta-->
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-ND3W28S');</script>
+    <!-- End Google Tag Manager -->
+    <link rel="icon" href="~/Content/Images/iconnuochoa1.jpg" type="image/x-icon" />
+
+    <title>@ViewBag.Title</title>
+    @*JQuery*@
+    <script src="~/scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/scripts/jquery-1.8.0.js"></script>
+    @*Font Awesome*@
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    @*JQuery*@
+    <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!--Css Trang Chi Tiet-->
+    <link href="~/Content/Css/TrangChiTietCss.css" rel="stylesheet" />
+    <!--Css Custom-->
+    <link href="~/Content/Css/BaiVietCss.css" rel="stylesheet" />
+    <link href="~/Content/Css/CssDKDN.css" rel="stylesheet" />
+    <link href="~/Content/Css/CssIconFooter.css" rel="stylesheet" />
+    <link href="~/Content/Css/CssTrangAdmin.css" rel="stylesheet" />
+    <link href="~/Content/Css/CustomAd.css" rel="stylesheet" />
+    <link href="~/Content/Css/CustomCss1.css" rel="stylesheet" />
+
+    <link href="~/Content/Css/GioHang.css" rel="stylesheet" />
+    <link href="~/Content/Css/QuanTriDanhMuc.css" rel="stylesheet" />
+    <link href="~/Content/Css/SanPhamCss.css" rel="stylesheet" />
+    <link href="~/Content/Css/ThanhToanThanhCong.css" rel="stylesheet" />
+    <link href="~/Content/Css/TrangChiTiet.css" rel="stylesheet" />
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+    <link href="~/Content/Css/TinTuc.css" rel="stylesheet" />
+
+    @*custom js*@
+    <script src="~/Scripts/JavaScriptCustom1.js"></script>
+    <script src="~/scripts/SlideJS.js"></script>
+    <script src="~/scripts/DKDNjs.js"></script>
+    <script src="~/Scripts/jsGioHang1.js"></script>
+    <script src="~/Scripts/Timkiem.js"></script>
+    <script src="~/Scripts/DNFB.js"></script>
+</head>
+<body onunload="tai()">
+    <div class="container-main">
+        <header>
+            <div id="Welcome">
+                <a href="/TrangChu/ViewTrangChu"> <span class="fa fa-home"></span> Trang Chủ</a>
+                @{
+                    if (Session["TenKH"] == null)
+                    {
+                        <a href="/DKDN/DangNhap"><span class="fa fa-user"></span> Tài Khoản Của Tôi</a>
+                        <a href="/DKDN/DangNhap"><span class="fa fa-sign-in"></span> Đăng Nhập</a>
+                    }
+                    else
+                    {
+                        <a href="/DKDN/ThongTinCaNhan"><span class="fa fa-hand-peace-o"></span> Xin Chào!@Session["MaKH"] @Session["TenKH"]</a>
+                        <a href="/DKDN/DangXuat"><span class="fa fa-sign-out"></span> Đăng Xuất</a>
+                    }
+                }
+                <a href="/DKDN/DangKy"><span class="fa fa-registered"></span> Tạo Tài Khoản</a>
+            </div>
+            <div id="Logo">
+                <a href="/TrangChu/ViewTrangChu">
+                    <img src="~/Content/Images/product/Logo.png" alt="icon-shopmypham" />
+                </a>
+            </div>
+            <form action="/TrangChu/TimKiem">
+                <div id="Search">
+                    <div @*id="btn-Search"*@><button id="btntimkiem"style="float: right;  margin-right: -78px;height: 34px;" type="submit">Tìm Kiếm</button></div>
+                    <input type="text" id="txt-Search" placeholder="Tìm Kiếm" name="name">
+                </div>
+            </form>
+            <div id="cart">
+                <a href="/GioHang/GioHang">
+                    <h4 class="fa fa-shopping-cart"></h4>
+                    <span>@Session["TongSL"] Sản phẩm - @Session["TongTien"] VND</span>
+                </a>
+            </div>
+        </header>
+        <div id="menu">
+            <h4 class="fa fa-home"></h4>
+            <span class="fa fa-bars" id="btn-Menu"></span>
+            <ul>
+                <li>
+                    <a style="padding:0 15px;" href="/TrangChu/ViewTrangChu"><span style="font-size:40px;" class="fa fa-home"></span></a>
+                    @Html.Action("Menu", "Menu")
+                </li>
+            </ul>
+
+
+            <div id="menu-responsive">
+                <ul>
+                    <li id="menu-plus">
+                        <span>Sách Theo Chủ Đề <i class="fa fa-plus-square"></i> </span>
+                        <div>
+                            @Html.Action("TopicPartial", "PartialView")
+                        </div>
+                    </li>
+                    <li id="menu-plus2">
+                        <span>  Theo NXB <i class="fa fa-plus-square"></i> </span>
+                        <div>
+                            @Html.Action("PublishPartialRespon", "PartialView")
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container">
+            <div class="col-left">
+                <div class="menu2">
+                    <div id="menu2-heading">
+                        <span>Chủ Đề</span>
+                    </div>
+                    @Html.Action("TopicPartial", "PartialView")
+                </div>
+                <div class="menu2" style="margin-top:50px;">
+                    <div id="menu2-heading">
+                        <span>Lọc theo giá</span>
+                    </div>
+                    @Html.Action("LocTheoGia", "PartialView")
+                </div>
+                <div class="menu2" style="margin-top:50px; height:550px;">
+                    <div id="menu2-heading">
+                        <span>Sản phẩm mới</span>
+                    </div>
+                    <marquee direction="up" height="450" scrollamount="10" loop="INFINITE" behavior="scroll" onmouseover="this.stop()" onmouseout="this.start()">
+                        @Html.Action("SanPhamMoi", "PartialView")
+                    </marquee>
+                </div>
+                <div class="menu2" style="margin-top:50px; height:550px;">
+                    <div id="menu2-heading">
+                        <span>Sản phẩm bán chạy</span>
+                    </div>
+                    <marquee direction="up" height="450" scrollamount="10" loop="INFINITE" behavior="scroll" onmouseover="this.stop()" onmouseout="this.start()">
+                        @*@Html.Action("SanPhamBanChay", "PartialView")*@
+                    </marquee>
+                </div>
+            </div>
+            <div class="content">
+                @RenderBody()
+            </div>
+
+        </div>
+    </div>
+    <div style="clear:both"></div>
+    <footer>
+        <div class="collum" id="TT">
+            <h3>Thông Tin Của Bạn</h3>
+            <p><a href="https://www.facebook.com/" class="fa fa-facebook" rel="nofollow"></a>Facebook</p><br />
+            <p><a href="https://www.youtube.com/?gl=VN" class="fa fa-youtube" rel="nofollow"></a>Youtube</p><br />
+            <p><a href="https://www.google.com/" class="fa fa-google" rel="nofollow"></a>Google<br /></p>
+        </div>
+        <div class="collum" id="TG">
+            <h3>Trợ Giúp</h3><br />
+            <a href="#"><p>Hướng Dẫn Mua Hàng</p></a><br /><br />
+            <a href="#"><p>Phương Thức Thanh Toán</p></a><br /><br />
+            <a href="#"><p>Chính Sách Đổi Trả</p></a>
+        </div>
+        <div class="collum" id="HT">
+            <h3>Hỗ Trợ Khách Hàng</h3><br />
+            <a href="#"><p>Hotline:0336142697</p></a><br /><br />
+            <a href="#"><p>Email:phanthinh601@gmail.com</p></a><br /><br />
+            <a href="#"><p>Website:  ShopMyPhamOnlines.somee.com.vn</p></a>
+        </div>
+        <div class="contact">
+            <h3>Google Map</h3><br />
+            <p>
+                <div id="map" style="width:100px;height:100px;">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.585889029493!2d106.66194351480274!3d10.99459729217373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xcba34f40990ae61e!2zU2hvcCBN4bu5IFBo4bqpbQ!5e0!3m2!1svi!2s!4v1594792171065!5m2!1svi!2s" width="350" height="250" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                </div>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

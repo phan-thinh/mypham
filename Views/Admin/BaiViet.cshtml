@@ -1,0 +1,47 @@
+﻿@using ShopMyPham.Models;
+@model PagedList.IPagedList<BaiViet>
+@using PagedList.Mvc;
+@{
+    Layout = "~/Views/_LayoutTrangAd.cshtml";
+}
+
+
+
+<div class="QL-BaiViet">
+    <h1 style="border-bottom:solid 1px;padding:5px 5px 5px 5px;">Danh sách bài viết    <div style="float:right;font-size: 18px; margin-bottom: 10px;"><a href="/Admin/ThemBaiViet"><i class="fa fa-plus-square" aria-hidden="true"></i> Thêm mới</a></div></h1><br />
+    <table>
+        <thead>
+            <tr>
+                <td><h3>Tên</h3></td>
+                <td><h3>Hình ảnh</h3></td>
+                <td><h3>Tên danh mục</h3></td>
+                <td><h3>Từ khóa</h3></td>
+                <td><h3>Cập nhật</h3></td>
+                <td><h3></h3></td>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td><a href="#" style="font-size:small;">@item.TenBaiViet</a></td>
+                <td><img src="~/Content/Images/baiviet/@item.AnhDaiDien" width="100" height="120" alt="@item.Keywords" /></td>
+                <td>@item.DanhMuc1.TenDanhMuc</td>
+                <td>@item.Keywords</td>
+                <td>@item.CapNhat</td>
+
+                <td>
+                    <a href="@Url.Action("DeleteBaiViet","Admin",new { id = item.ID })"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="QL-PhanTrang" style="font-size:initial; text-align:right;">
+    @Html.PagedListPager(Model, page => Url.Action("BaiViet", new { page }))
+</div>
+
+
+

@@ -1,0 +1,9 @@
+﻿@using ShopMyPham.Models;
+@model List<NhaSanXuat>
+@foreach (var item in Model)
+{
+    <ul>
+        <li><a href="#"><span class="fa fa-chevron-right"></span>@item.TenNSX</a></li>
+    </ul>
+}
+

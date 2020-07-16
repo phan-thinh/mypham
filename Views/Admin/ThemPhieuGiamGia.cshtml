@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "ThemPhieuGiamGia";
+    Layout = "~/Views/_LayoutTrangAd.cshtml";
+}
+<div style="text-align: center;font-size: 18px;    background: #eee;"><i class="fa fa-plus-square" aria-hidden="true"></i> Thêm Mới</div>
+<form action="/Admin/ThemPhieuGiamGia" method="post" enctype="multipart/form-data">
+    <div class="frm-ThemSach">
+        <table>
+            <tbody>
+                <tr>
+                    <td>Tên Giảm Giá:</td>
+                    <td><input type="text" required name="TenGiamGia" id="TenGiamGia" /></td>
+                </tr>
+               
+                <tr>
+                    <td>Thời Gian Bắt Đầu:</td>
+                    <td><input type="datetime" required name="ThoiGianBatDau" id="ThoiGianBatDau" /></td>
+                </tr>
+                <tr>
+                    <td>Thời Gian Kết Thúc:</td>
+                    <td><input type="datetime" required name="ThoiGianKetThuc" id="ThoiGianKetThuc" /></td>
+                </tr>
+                <tr>
+                    <td>Mục Giảm Giá:</td>
+                    <td><input type="text" required name="MucGiamGia" id="MucGiamGia" /></td>
+                </tr>
+                <tr>
+                    <td>Số Lượng:</td>
+                    <td><input type="number" min="1" required name="SoLuong" id="SoLuong" /></td>
+                </tr>
+                <tr>
+                    <td>Giảm Giá:</td>
+                    <td><input type="text" required name="GiamGia" id="GiamGia" /></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div id="btn-ThemSach">
+        <input id="sub-ThemNuocHoa" type="submit" value="Thêm" />
+    </div>
+</form>

@@ -1,0 +1,74 @@
+﻿@using ShopMyPham.Models;
+@model List<NuocHoa>
+@{
+    ViewBag.Title = "EditNuocHoa";
+    Layout = "~/Views/_LayoutTrangAd.cshtml";
+}
+<div class="Edit-DMS">
+    <h1>Cập nhật nước hoa</h1><br /><br />
+    <table>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>Hình Ảnh</td>
+                    <td><img src="~/Content/Images/product/@item.AnhBia" width="100" height="120" /></td>
+                </tr>
+                <tr>
+                    <td style="display:none"><input type="text" id="MaNuocHoa" value="@item.MaNuocHoa" /></td>
+                    <td>Tên Nước Hoa:</td>
+                    <td><textarea id="TenNuocHoa" name="TenNuocHoa">@item.TenNuocHoa</textarea></td>
+                </tr>
+                <tr>
+                    <td>Giá bán:</td>
+                    <td><input type="text" id="GiaBan" name="TenLoaiNuocHoa" value="@item.GiaBan" /></td>
+                </tr>
+                <tr>
+                    <td>Mô tả:</td>
+                    <td><textarea id="Keywords" name="Keywords">@item.MoTa</textarea></td>
+                </tr>
+                <tr>
+                    <td>Meta Keywords:</td>
+                    <td><textarea id="Keywords" name="Keywords">@item.Keywords</textarea></td>
+                </tr>
+
+
+            }
+        </tbody>
+    </table>
+    <br />
+    <script type="text/javascript">
+        function SubEdit() {
+
+            //var HinhAnh = $('#HinhAnh').val();
+
+            var MaNuocHoa = $('#MaNuocHoa').val();
+            var TenNuocHoa = $('#TenNuocHoa').val();
+            var GiaBan = $('$GiaBan').val();
+            var MoTa = $('$MoTa').val();
+            var Keywords = $('#Keywords').val();
+
+
+            $.ajax({
+                url: "/Admin/CapNhatEditNuocHoa",
+                data: { MaNuocHoa: MaNuocHoa, TenNuocHoa: TenNuocHoa, Keywords: Keywords, GiaBan: GiaBan, MoTa: MoTa },
+                type: "POST",
+                success: function (result) {
+                    if (result == 'true') {
+                        alert("Cập nhật thành công!")
+                    }
+                    else {
+                        alert("Cập nhật không thành công!")
+                    }
+                }
+            });
+        }
+    </script>
+    <div class="XL-Edit-DMS">
+        <a href="/Admin/ThemNuocHoa" style="float:left; color:white;background-color:#0072bc; padding:5px 5px 5px 5px" ;>Thêm nước hoa</a>
+        <input type="submit" onclick="SubEdit()" ; value="Lưu dữ liệu" id="Sub-Edit" />
+        <a href="/Admin/NuocHoaAD" style="float:right;padding:5px 5px 5px 5px;"> Trở lại</a>
+    </div>
+</div>
+
+

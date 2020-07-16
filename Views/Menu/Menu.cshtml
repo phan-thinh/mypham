@@ -1,0 +1,8 @@
+﻿@using ShopMyPham.Models;
+@model List<DanhMuc>
+@foreach (var item in Model)
+{
+
+    <a href="@item.Link">@item.TenDanhMuc</a>
+
+}

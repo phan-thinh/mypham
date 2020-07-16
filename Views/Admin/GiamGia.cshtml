@@ -1,0 +1,47 @@
+﻿@using ShopMyPham.Models;
+@model PagedList.IPagedList<PhieuGiamGia>
+@using PagedList.Mvc;
+@{
+    Layout = "~/Views/_LayoutTrangAd.cshtml";
+}
+
+
+<div class="QL-BaiViet">
+    <h1 style="border-bottom:solid 1px;padding:5px 5px 5px 5px;">Danh sách giảm giá    <div style="float:right;font-size: 18px; margin-bottom: 10px;"><a href="/Admin/ThemPhieuGiamGia"><i class="fa fa-plus-square" aria-hidden="true"></i> Thêm mới</a></div></h1><br />
+    <table>
+        <thead>
+            <tr>
+                <td><h3>Tên giảm giá</h3></td>
+                <td><h3>Mã Code Giảm Giá</h3></td>
+                <td><h3>Thời gian bắt đầu</h3></td>
+                <td><h3>Thời gian kết thúc</h3></td>
+                <td><h3>Mức giảm giá</h3></td>
+                <td><h3>Số lượng</h3></td>
+                <td><h3></h3></td>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td><a href="#" style="font-size:small;">@item.TenGiamGia</a></td>
+                <td><a href="#" style="font-size:small;">@item.GiamGia</a></td>
+                <td><a href="#" style="font-size:small;">@item.ThoiGianBatDauGiamGia</a></td>
+                <td><a href="#" style="font-size:small;">@item.ThoiGianKetThucGiamGia</a></td>
+                <td><a href="#" style="font-size:small;">@item.MucGiamGia%</a></td>
+                <td><a href="#" style="font-size:small;">@item.SoLuong</a></td>
+                
+                <td>
+                    <a href="@Url.Action("DeleteMaGiamGia","Admin",new { id = item.MaGiamGia })"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="QL-PhanTrang" style="font-size:initial; text-align:right;">
+    @Html.PagedListPager(Model, page => Url.Action("GiamGia", new { page }))
+</div>
+
+

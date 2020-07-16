@@ -1,0 +1,52 @@
+﻿@using ShopMyPham.Models;
+@model List<DanhMuc>
+@{
+    Layout = "~/Views/_LayoutTrangAd.cshtml";
+}
+
+<div class="Edit-DMS">
+    <h1>Cập nhật danh mục</h1><br /><br />
+    <table>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="display:none"><input type="text" id="LayID" value="@item.ID" /></td>
+                    <td>Tên danh mục:</td>
+                    <td><input type="text" id="TenDanhMuc" name="TenDanhMuc" value="@item.TenDanhMuc" /></td>
+                </tr>
+                <tr>
+                    <td>Meta Keywords:</td>
+                    <td><textarea id="Keywords" name="Keywords">@item.Keywords</textarea></td>
+                </tr>
+                <tr>
+                    <td>Meta Description:</td>
+                    <td><textarea id="Description" name="Description">@item.Description</textarea></td>
+                </tr>
+                <tr>
+                    <td>Title:</td>
+                    <td><input type="text" id="Title" name="Title" value="@item.Title" /></td>
+                </tr>
+                <tr>
+                    <td>Meta Title:</td>
+                    <td><textarea id="MetaTitle" name="MetaTitle">@item.MetaTitle</textarea></td>
+                </tr>
+                <tr>
+                    <td>Thứ tự:</td>
+                    <td><input type="text" id="STT" name="STT" value="@item.STT" /></td>
+                </tr>
+                <tr>
+                    <td>Link liên kết:</td>
+                    <td><input type="text" id="Link" name="Link" value="@item.Link" /></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <br />
+    <div class="XL-Edit-DMS">
+        <a href="/Admin/ThemDanhMucBaiViet" style="float:left; color:white;background-color:#0072bc; padding:5px 5px 5px 5px" ;>Tạo danh mục</a><input type="submit" onclick="SubEdit()" ; value="Lưu dữ liệu" id="Sub-Edit" /><a href="/Admin/DanhMucMenu" style="float:right;padding:5px 5px 5px 5px;"> Trở lại</a>
+    </div>
+</div>
+
+
+

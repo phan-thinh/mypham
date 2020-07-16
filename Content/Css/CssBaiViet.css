@@ -1,0 +1,108 @@
+﻿.QL-BaiViet {
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+}
+
+    .QL-BaiViet table td {
+        height: 30px;
+    }
+
+    .QL-BaiViet > table {
+        border-collapse: collapse;
+        border: 1px solid #ddd;
+    }
+
+        .QL-BaiViet > table > thead {
+            border-collapse: collapse;
+            border: 1px solid #ddd;
+        }
+
+            .QL-BaiViet > table > thead tr {
+                background: #eee;
+                vertical-align: middle;
+                text-align: center;
+            }
+
+        .QL-BaiViet > table td {
+            padding-top: 5px;
+            text-align: center;
+        }
+
+            .QL-BaiViet > table td > a {
+                font-size: 25px;
+            }
+
+    .QL-BaiViet div a {
+        background-color: #ddd;
+        float: right;
+        height: 20px;
+        width: 120px;
+        border-radius: 2px;
+        color: black;
+        padding: 5px 5px 5px 5px;
+    }
+
+        .QL-BaiViet div a:hover {
+            background-color: #f0f0f1;
+            float: right;
+            height: 20px;
+            width: 120px;
+            border-radius: 2px;
+            height: 20px;
+            color: black;
+            padding: 5px 5px 5px 5px;
+        }
+
+.XuLi-BaiViet {
+    text-align: center;
+}
+
+    .XuLi-BaiViet input[type=submit] {
+        padding: 12px 12px 12px 12px;
+        background-color: #d42020;
+        line-height: 1.5px;
+        font-size: 15px;
+        border-radius: 3px;
+        border-color: red;
+        color: white;
+    }
+
+    .XuLi-BaiViet a {
+        background-color: #f0f0f1;
+        font-size: 15px;
+        border-radius: 3px;
+        padding: 5px 5px 5px 5px;
+    }
+
+.frm-ThemBaiViet table {
+    width: 100%;
+}
+
+    .frm-ThemBaiViet table td {
+        padding: 15px;
+        font-size: 14px;
+    }
+
+.frm-ThemBaiViet input[type=text] {
+    height: 25px;
+    width: 300px;
+}
+
+.frm-ThemBaiViet textarea {
+    height: 50px;
+    width: 300px;
+}
+
+.frm-ThemBaiViet {
+    border-bottom: solid 1px;
+}
+
+.td1 {
+    width: 17%;
+    text-align: right;
+}
+
+#ID {
+    width: 300px;
+}

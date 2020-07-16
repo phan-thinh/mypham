@@ -1,0 +1,19 @@
+﻿body {
+}
+
+.ThanhToanThanhCong h1{
+    color:blue;
+    padding: 5px 5px 5px 5px;
+}
+    .ThanhToanThanhCong h2{
+        padding: 5px 5px 5px 5px;
+    }
+        .ThanhToanThanhCong h3{
+            padding: 5px 5px 5px 5px;
+        }
+            .ThanhToanThanhCong a{
+                padding: 15px 15px 15px 15px;
+                border: 1px solid #ddd;
+                background-color: #f0f0f1;
+                font-size:large;
+            }

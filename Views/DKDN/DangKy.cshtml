@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "Đăng ký";
+    Layout = "~/Views/_LayoutTrangChu.cshtml";
+}
+@section Meta{
+    <meta property="og:title" content="Đăng ký" />
+    <meta property="og:description" content="Đăng ký" />
+    <meta name="keywords" content="Đăng ký thành viên" />
+    <meta name="description" content="Đăng ký thành viên" />
+
+}
+<h1>Đăng Ký Tài Khoản</h1>
+<form action="/DKDN/DangKy" method="post">
+    <h2>Thông Tin cá Nhân</h2>
+    <div class="frm-content">
+        <table class="frm-Table">
+            <tbody>
+                <tr>
+                    <td>Họ Tên:</td>
+                    <td><input type="text" name="HoTen" id="HoTen" /></td>
+                </tr>
+                <tr>
+                    <td>Giới Tính:</td>
+                    <td>
+                        <select id="SL-GT" name="GioiTinh">
+                            <option value="Nam">Nam</option>
+                            <option value="Nữ">Nữ</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><input type="text" name="Email" id="Email" /></td>
+                </tr>
+                <tr>
+                    <td>Số Điện Thoại:</td>
+                    <td><input type="number" required name="SDT" id="SDT" /></td>
+                </tr>
+                <tr>
+                    <td>Ngày Sinh</td>
+                    <td><input type="text" name="NgaySinh" id="NgaySinh" /></td>
+                </tr>
+                <tr>
+                    <td>Địa Chỉ</td>
+                    <td><input type="text" name="DiaChi" id="DiaChi" /></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <h2>Thông Tin Đăng Nhập</h2>
+    <div class="frm-content">
+        <table>
+            <tbody>
+                <tr>
+                    <td>Tên Đăng Nhập:</td>
+                    <td><input type="text" name="TenDN" id="TenDN" /></td>
+                </tr>
+                <tr>
+                    <td>Mật Khẩu:</td>
+                    <td><input type="text" name="MatKhau" id="MatKhau" /></td>
+                </tr>
+                <tr>
+                    <td>Nhập Lại Mật Khẩu:</td>
+                    <td><input type="text" name="LaiMK" id="LaiMK" /></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="btn-DangKy">
+        <p id="ThongBao"></p>
+        <input id="sub-DangKy" type="submit" value="Đăng Ký" />
+    </div>
+</form>

@@ -1,0 +1,29 @@
+﻿@using ShopMyPham.Models;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<BaiViet>
+@{
+    Layout = "~/Views/_LayoutTrangChu.cshtml";
+    ViewBag.Title = "Tin tức";
+}
+@section Meta{
+
+    <meta property="og:title" content="tin-tuc" />
+    <meta property="og:description" content="tin-tuc" />
+    <meta name="keywords" content="tin tức" />
+    <meta name="description" content="tin tức" />
+}
+<div class="TinTuc" style="margin-left:2%;">
+    <h1 style="border-bottom:solid 1px;padding:5px 5px 5px 5px;">Tin tức mới</h1><br />
+    @foreach (var item in Model)
+    {
+        <ul>
+            <li>
+                <img src="~/Content/Images/baiviet/@item.AnhDaiDien" width="300" height="150" alt="@item.Keywords" />
+                <div class="description"><a href="/TinTuc/NoiDungTinTuc?IDDanhMuc=@item.ID" style="font-size:small;"><h2>@item.TenBaiViet</h2><br /><h3>@item.Description</h3></a></div>
+            </li>
+        </ul>
+    }
+</div>
+<div class="QL-PhanTrang" style="font-size:initial; text-align:right;">
+    @Html.PagedListPager(Model, page => Url.Action("TinTuc", new { page }))
+</div>

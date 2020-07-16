@@ -1,0 +1,54 @@
+﻿@model ShopMyPham.Models.BaiViet
+@{
+    ViewBag.Title = "DeleteBaiViet";
+    Layout = "~/Views/_LayoutTrangAd.cshtml";
+}
+@using (Html.BeginForm())
+{
+
+    @Html.AntiForgeryToken()
+    <div class="w3-container w3-brown">
+        <h2>Xóa Bài Viết</h2>
+    </div>
+    <div class="Xoabaiviet">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <td style="display:none;"><h3>Tên </h3></td>
+                    <td><h3>Tên</h3></td>
+                    <td><h3>Hình ảnh</h3></td>
+                    <td><h3>Tên danh mục</h3></td>
+                    <td><h3>Từ khóa</h3></td>
+                    <td><h3>Cập nhật</h3></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+
+
+                    <td>  @Html.DisplayFor(model => model.TenBaiViet)</td>
+                    <td><img width="15%" src="~/Content/Images/product/@Html.DisplayFor(model =>model.AnhDaiDien)" /></td>
+                    <td>
+                        @Html.DisplayFor(model => model.TenBaiViet)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.MetaTitle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.CapNhat)
+                    </td>
+
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="div-btn">
+       <a id="button" class="btnxoa" href="/Admin/BaiViet">Quay lại</a>
+
+        <input id="button" class="btnxoa" type="submit" onclick="xoa()" value="Xóa" />
+    </div>
+}
+
+
+

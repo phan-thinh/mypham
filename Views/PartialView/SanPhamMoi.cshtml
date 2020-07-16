@@ -1,0 +1,12 @@
+﻿@using ShopMyPham.Models;
+@model List<NuocHoa>
+<table>
+    @foreach (var item in Model)
+    {
+            
+            <tr><td><img src="~/Content/Images/product/@item.AnhBia" alt="@item.Keywords" height="100" width="100" style="margin-left:auto;margin-right:auto;display:block;" /></td></tr>
+            <tr style="color:blue;"><td><a href="/ViewNuocHoa/ChiTietNuocHoa?MaNuocHoa=@item.MaNuocHoa"><h3 style="text-align:center;">@item.TenNuocHoa</h3></a></td></tr>
+            <tr style="margin-bottom:10px; color:red;"><td><h4 style="text-align:center;">@string.Format("{0:0,0}", item.GiaBan) VNĐ</h4></td></tr>
+           
+    }
+    </table>

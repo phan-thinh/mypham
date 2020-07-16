@@ -1,0 +1,61 @@
+﻿@model ShopMyPham.Models.NuocHoa
+@{
+    ViewBag.Title = "DeleteSP";
+    Layout = "~/Views/_LayoutTrangAd.cshtml";
+}
+
+
+
+
+@using (Html.BeginForm())
+{
+
+    @Html.AntiForgeryToken()
+    <div class="w3-container w3-brown">
+        <h2>Xóa sản phẩm</h2>
+    </div>
+    <div class="Xoabaiviet">
+        <table style="width:100%">
+            <tr id="title">
+                <th>Từ khóa</th>
+                <th>Tên nước hoa</th>
+                <th>Mô tả</th>
+                <th>Hình ảnh</th>
+
+            </tr>
+            <tr>
+                <td>@Html.DisplayFor(model => model.Keywords)</td>
+                <td> @Html.DisplayFor(model => model.TenNuocHoa)</td>
+                <td>@Html.DisplayFor(model => model.MoTa)</td>
+                <td><img src="~/Content/Images/product/@Html.DisplayFor(model =>model.AnhBia)" /></td>
+            </tr>
+        </table>
+    </div>
+
+    <script type="text/javascript">
+        function xoa()
+
+        $.ajax({
+            url: "/Admin/DeleteSP",
+            success: function (result) {
+                if (result == 'true') {
+                    alert("Xóa thành công!")
+                }
+                else {
+                    alert("Xóa không thành công!")
+                }
+            }
+        });
+    </script>
+
+    <div class="div-btn">
+        <a id="button" class="btnxoa" href="/Admin/NuocHoaAD">Quay lại</a>
+        <input id="button" class="btnxoa" type="submit" onclick="xoa()" value="Xóa" />
+    </div>
+
+
+
+}
+
+
+

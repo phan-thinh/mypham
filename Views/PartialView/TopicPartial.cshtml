@@ -1,0 +1,8 @@
+﻿@using ShopMyPham.Models;
+@model List<LoaiNuocHoa>
+@foreach (var item in Model)
+{
+    <ul>
+        <li><a href="/ViewNuocHoa/NuocHoaTheoLoai?MaLoaiNuocHoa=@item.MaLoaiNuocHoa"><span class="fa fa-chevron-right"></span>@item.TenLoaiNuocHoa</a></li>
+    </ul>
+}

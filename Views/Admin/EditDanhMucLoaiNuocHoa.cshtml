@@ -1,0 +1,75 @@
+﻿@using ShopMyPham.Models;
+@model List<LoaiNuocHoa>
+@{
+    ViewBag.Title = "EditDanhMucLoaiNuocHoa";
+    Layout = "~/Views/_LayoutTrangAd.cshtml";
+}
+
+<div class="Edit-DMS">
+    <h1>Cập nhật danh mục loại nước hoa</h1><br /><br />
+    <table>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="display:none"><input type="text" id="LayMaLoaiNuocHoa" value="@item.MaLoaiNuocHoa" /></td>
+                    <td>Tên danh mục:</td>
+                    <td><input type="text" id="TenLoaiNuocHoa" name="TenLoaiNuocHoa" value="@item.TenLoaiNuocHoa" /></td>
+                </tr>
+                <tr>
+                    <td>Meta Keywords:</td>
+                    <td><textarea id="Keywords" name="Keywords">@item.Keywords</textarea></td>
+                </tr>
+                <tr>
+                    <td>Meta Description:</td>
+                    <td><textarea id="Description" name="Description">@item.Description</textarea></td>
+                </tr>
+                <tr>
+                    <td>Title:</td>
+                    <td><input type="text" id="Title" name="Title" value="@item.Title" /></td>
+                </tr>
+                <tr>
+                    <td>Meta Title:</td>
+                    <td><textarea id="MetaTitle" name="MetaTitle">@item.MetaTitle</textarea></td>
+                </tr>
+                <tr>
+                    <td>Thứ tự:</td>
+                    <td><input type="text" id="STT" name="STT" value="@item.STT" /></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <br />
+    <script type="text/javascript">
+        function SubEdit() {
+            var MaLoaiNuocHoa = $('#LayMaLoaiNuocHoa').val();
+            var TenLoaiNuocHoa = $('#TenLoaiNuocHoa').val();
+            var Keywords = $('#Keywords').val();
+            var Description = $('#Description').val();
+            var Title = $('#Title').val();
+            var MetaTitle = $('#MetaTitle').val();
+            var STT = $('#STT').val();
+            $.ajax({
+                url: "/Admin/CapNhatEditDanhMucLoaiNuocHoa",
+                data: { TenLoaiNuocHoa: TenLoaiNuocHoa, Keywords: Keywords, Description: Description, Title: Title, MetaTitle: MetaTitle, STT: STT, MaLoaiNuocHoa: MaLoaiNuocHoa },
+                type: "POST",
+                success: function (result) {
+                    if (result == 'true') {
+                        alert("Cập nhật thành công!")
+                    }
+                    else {
+                        alert("Cập nhật không thành công!")
+                    }
+                }
+            });
+        }
+    </script>
+    <div class="XL-Edit-DMS">
+        <a href="/Admin/ThemDanhMucLoaiNuocHoa" style="float:left; color:white;background-color:#0072bc; padding:5px 5px 5px 5px" ;>Tạo danh mục</a>
+        <input type="submit" onclick="SubEdit()" ; value="Lưu dữ liệu" id="Sub-Edit" />
+        <a href="/Admin/DanhMucLoaiNuocHoa" style="float:right;padding:5px 5px 5px 5px;"> Trở lại</a>
+    </div>
+</div>
+
+
+

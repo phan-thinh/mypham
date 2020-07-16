@@ -1,0 +1,26 @@
+﻿@using ShopMyPham.Models;
+@model List<BaiViet>
+@{
+    Layout = "~/Views/_LayoutTrangChu.cshtml";
+}
+@section Meta{
+    @foreach (var item in Model)
+    {
+        <meta property="og:title" content="@item.Title" />
+        <meta property="og:description" content="@item.Description" />
+        <meta name="keywords" content="@item.Keywords" />
+        <meta name="description" content="@item.Description" />
+        break;
+    }
+}
+
+<div class="NoiDung-TT">
+    @foreach (var item in Model)
+    {
+        <h1>@item.TenBaiViet</h1><br />
+        @Html.Raw(@item.NoiDung)<br />
+        <p style="text-align:right;">@item.CapNhat</p>
+    }
+</div>
+
+

@@ -1,0 +1,51 @@
+﻿@using ShopMyPham.Models;
+@model List<NuocHoa>
+@{
+    Layout = "~/Views/_LayoutTrangChu.cshtml";
+    foreach (var item in Model)
+    {
+        ViewBag.Title = "Danh sách nước hoa theo giá ";
+    }
+}
+@section Meta{
+    @foreach (var item in Model)
+    {
+        <meta property="og:title" content="Danh sách nước hoa theo giá" />
+        <meta property="og:description" content="Danh sách nước hoa theo giá" />
+        <meta name="keywords" content="Danh sách nước hoa theo giá" />
+        <meta name="description" content="Danh sách nước hoa theo giá" />
+        break;
+    }
+}
+<div class="mySlide">
+    <div>
+        <img class="SlidesImg" src="~/Content/Images/slide1.jpg" alt="slide1" />
+        <img class="SlidesImg" src="~/Content/Images/slide3.jpg" alt="slide3" />
+        <img class="SlidesImg" src="~/Content/Images/slide4.jpg" alt="slide4" />
+        <button type="button" id="btn-L"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+        <button type="button" id="btn-R"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+    </div>
+</div>
+<div class="box">
+    <div class="box-heading">
+            <h1 style="padding: 5px 5px 5px 5px;">Danh sách nước hoa: </h1>
+    </div>
+    <div class="box-content">
+        <div class="box-product">
+            @foreach (var item in Model)
+            {
+                <div>
+                    <a href="/ViewNuocHoa/ChiTietNuocHoa?MaNuocHoa=@item.MaNuocHoa">
+                        <div class="Images"><img src="~/Content/Images/product/@item.AnhBia" alt="@item.Keywords" /></div>
+                        <div class="Name"><h2 style="font-size:small;">@item.TenNuocHoa</h2></div>
+                        <div class="price">@string.Format("{0:0,0}", item.GiaBan) VND</div>
+                    </a>
+                    <div class="btn-cart">
+                        <input type="button" id="btn-Cart" value="Thêm Vào Giỏ Hàng" onclick="DatHang(@item.MaNuocHoa)" />
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

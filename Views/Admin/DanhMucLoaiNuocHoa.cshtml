@@ -1,0 +1,36 @@
+﻿@using ShopMyPham.Models
+@model List<LoaiNuocHoa>
+@{
+    /**/
+
+    ViewBag.Title = "DanhMucLoaiNuocHoa";
+    Layout = "~/Views/_LayoutTrangAd.cshtml";
+}
+<div class="QL-DanhMucSach">
+    <h1 style="border-bottom:solid 1px;padding:5px 5px 5px 5px;">Danh Mục Các Loại Nước Hoa    <div style="float:right;font-size: 18px; margin-bottom: 10px;"><a href="/Admin/ThemDanhMucLoaiNuocHoa"><i class="fa fa-plus-square" aria-hidden="true"></i> Tạo danh mục</a></div></h1><br />
+    <table>
+        <thead>
+            <tr>
+                <td><h3>STT</h3></td>
+                <td><h3>Tên danh mục</h3></td>
+                <td><h3>Slug</h3></td>
+                <td><h3>Xử lý</h3></td>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.STT</td>
+                    <td><a href="/Admin/EditDanhMucLoaiNuocHoa?MaLoaiNuocHoa=@item.MaLoaiNuocHoa" style="font-size:small;">@item.TenLoaiNuocHoa</a></td>
+                    <td>@item.MetaTitle</td>
+                    <td>
+                        <a href="@Url.Action("DeleteDanhMuc","Admin",new { id = item.MaLoaiNuocHoa })"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

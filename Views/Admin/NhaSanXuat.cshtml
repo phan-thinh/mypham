@@ -1,0 +1,37 @@
+﻿@using ShopMyPham.Models;
+@model PagedList.IPagedList<NhaSanXuat>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "NhaSanXuat";
+    Layout = "~/Views/_LayoutTrangAd.cshtml";
+}
+
+
+<div class="QL-BaiViet">
+    <h1 style="border-bottom:solid 1px;padding:5px 5px 5px 5px;">Nhà Sản Xuất   <div style="float:right;font-size: 18px; margin-bottom: 10px;"><a href="/Admin/ThemNhaSanXuat"><i class="fa fa-plus-square" aria-hidden="true"></i> Thêm mới</a></div></h1><br />
+    <table>
+        <thead>
+            <tr>
+               
+                <td style="display:none;"><h3>Mã NSX</h3></td>
+                <td><h3>Tên Nhà Sản Xuất</h3></td>
+                <td><h3>Xử lí</h3></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                int i = 1;
+                <tr>
+                    
+                    <td style="display:none;">@item.MaNSX</td>
+                    <td><a href="/Admin/EditNhaSanXuat?ID=@item.MaNSX" style="font-size:small;">@item.TenNSX</a> </td>
+                    <td>
+                        <a href="@Url.Action("DeleteNhaSanXuat","Admin",new { id = item.MaNSX })"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

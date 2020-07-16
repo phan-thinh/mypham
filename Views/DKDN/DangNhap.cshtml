@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Đăng nhập";
+    Layout = "~/Views/_LayoutTrangChu.cshtml";
+}
+@section Meta{
+    <meta property="og:title" content="Đăng nhập" />
+    <meta property="og:description" content="Đăng nhập" />
+    <meta name="keywords" content="Đăng nhập thành viên" />
+    <meta name="description" content="Đăng nhập thành viên" />
+
+}
+
+<h1>Đăng Nhập</h1>
+<div id="frm-DangNhap">
+    <div class="DN-Right">
+        <h2>Bạn Đã Có Tài Khoản? Đăng Nhập Tại Đây!</h2>
+        <form action="/DKDN/DangNhap" method="post">
+            <div class="DN-Content">
+                <p>Tài Khoản:</p>
+                <input type="text" id="TaiKhoan" name="TaiKhoan" />
+                <p>Mật Khẩu:</p>
+                <input type="password" id="MK" name="MK" />
+                <br />
+                <p id="DN-ThongBao">@Session["ThongBao"]</p>
+                <input type="submit" id="sub-DN" value="Đăng Nhập" />
+                <a href="/DKDN/DNFB" id="sub-DN" style="font-weight:normal;">Đăng nhập Facebook</a>
+            </div>
+        </form>
+      
+    </div>
+    <div class="DN-Left">
+        <h2>Bạn Chưa Có Tài Khoản?</h2>
+        <p>
+            Bằng cách tạo một tài khoản, bạn sẽ có thể mua sắm nhanh hơn, được cập
+            nhật về trạng thái của đơn đặt hàng và theo dõi các đơn đặt hàng bạn đã
+            thực hiện trước đây.
+        </p>
+        <a href="DangKy">Đăng ký</a>
+    </div>
+</div>

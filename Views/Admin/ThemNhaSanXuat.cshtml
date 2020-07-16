@@ -1,0 +1,25 @@
+﻿@using ShopMyPham.Models;
+@{
+    ViewBag.Title = "ThemNhaSanXuat";
+    Layout = "~/Views/_LayoutTrangAd.cshtml";
+}
+
+
+<div style="text-align: center;font-size: 18px;    background: #eee;"><i class="fa fa-plus-square" aria-hidden="true"></i> Thêm Mới</div>
+<form action="/Admin/ThemNhaSanXuat" method="post">
+    <div class="frm-ThemSach">
+        <table>
+            <tbody>
+                <tr>
+                    <td>Tên Nhà Sản Xuất:</td>
+                    <td><input type="text" required name="NhaSanXuat" id="NhaSanXuat"/></td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+    <div id="btn-ThemSach">
+        <input id="sub-ThemNhaSanXuat" type="submit" value="Thêm" />
+    </div>
+</form>
+

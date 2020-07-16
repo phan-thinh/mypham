@@ -1,0 +1,52 @@
+﻿@{
+    Layout = "~/Views/_LayoutTrangChu.cshtml";
+}
+@using ShopMyPham.Models;
+@using (Html.BeginForm("ThanhToanThanhCong", "GioHang", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="ThanhToanThanhCong">
+        <table>
+            <tr>
+                <td>
+                    <img alt="dathang" src="~/Content/Images/dathang.png" />
+                </td>
+                <td>
+                    <h1>Thanh toán thành công</h1>
+                    <h2>Đơn hàng của bạn đã được thanh toán thành công.</h2>
+                    <h2>Shop Mỹ Phẩm Online sẽ liên hệ với quý khách hàng sớm để bàn giao sản phẩm đã đặt hàng.</h2>
+                    <h2>
+                        Thời gian giao hàng: Từ <span id="ngaynhanhang">@string.Format("{0:dd/MM/yyyy}", @Session["NgayGiaoHang"])</span> đến <span id="ngaynhanhang1">@string.Format("{0:dd/MM/yyyy}", @Session["NgayNhanHang"])</span>
+                        @*<script type="text/javascript">
+                                var day = new Date();
+                                var d = day.getDate();
+                                var d1 = day.getDate()+5;
+                                var m = day.getMonth() + 1;
+                                var y = day.getFullYear();
+                                document.getElementById('ngaynhanhang').innerHTML = + d + "/" + m + "/" + y;
+                                document.getElementById('ngaynhanhang1').innerHTML = + d1 + "/" + m + "/" + y;
+                            </script>*@
+                    </h2>
+                    <h3><span style="color:red;">Lưu ý:</span> Nếu quý khách hàng đặt hàng vào ngày nghỉ cuối tuần(thứ 7, chủ nhật) hoặc ngày nghỉ lễ chúng tối sẽ liên hệ lại với quý khách vào thời gian làm việc tiếp theo.</h3>
+                    <br /><br />
+                </td>
+        </table>
+        @foreach (var dg in (IList<ShopMyPham.Models.KhachHang>)ViewData["khachhang"])
+        {
+            @Html.ValidationSummary()
+            <input id="To" style="visibility:hidden" name="To" type="text" value="@dg.Email">
+        }
+        <input id="Subject" style="visibility:hidden" name="Subject" type="text" value="Đơn hàng ShopMyPham">
+        @foreach (var dg in (IList<ShopMyPham.Models.DonHang>)ViewData["dondathang"])
+        {
+            <textarea style="visibility:hidden" cols="20" id="Body" name="Body" rows="2">Xin chào @dg.TenNguoiNhan
+                Mã số đợn hàng của bạn là: @dg.MaDonHang
+                Tổng tiền: @dg.TriGia đ  
+                Sản phẩm đã mua: @foreach (var item in (IList<ShopMyPham.Models.ChiTietDonHang>)ViewData["tensp"])
+                {@item.NuocHoa.TenNuocHoa}
+
+                Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất. Cảm ơn bạn đã ủng hộ ShopMyPham, chúc bạn thật nhiều sức khỏe !
+            </textarea>
+        }
+        <input type="submit" style=" margin-left:-40px; height:39px; background-color:#5fddf1; color: black; class="btn btn-animation btn2" value="Xác Nhận Thanh Toán" />
+    </div>
+}

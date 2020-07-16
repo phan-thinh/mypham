@@ -1,0 +1,226 @@
+﻿body {
+}
+
+
+.QL-DanhMuc {
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+}
+
+    .QL-DanhMuc table td {
+        height: 30px;
+    }
+
+    .QL-DanhMuc > table {
+        border-collapse: collapse;
+        border: 1px solid #ddd;
+    }
+
+        .QL-DanhMuc > table > thead {
+            border-collapse: collapse;
+            border: 1px solid #ddd;
+        }
+
+            .QL-DanhMuc > table > thead tr {
+                background: #eee;
+                vertical-align: middle;
+                text-align: center;
+            }
+
+        .QL-DanhMuc > table td {
+            padding-top: 5px;
+            text-align: center;
+        }
+
+            .QL-DanhMuc > table td > a {
+                font-size: 25px;
+            }
+
+    .QL-DanhMuc div a {
+        background-color: #ddd;
+        float: right;
+        height: 20px;
+        width: 150px;
+        border-radius: 2px;
+        color: black;
+        padding: 5px 5px 5px 5px;
+    }
+
+        .QL-DanhMuc div a:hover {
+            background-color: #f0f0f1;
+            float: right;
+            height: 20px;
+            width: 150px;
+            border-radius: 2px;
+            height: 20px;
+            color: black;
+            padding: 5px 5px 5px 5px
+        }
+
+.QL-DanhMucSach {
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+}
+
+    .QL-DanhMucSach table td {
+        height: 40px;
+    }
+
+    .QL-DanhMucSach div a {
+        padding: 5px 5px 5px 5px;
+        background-color: #f0f0f1;
+        float: right;
+        height: 20px;
+        width: 150px;
+        border-radius: 2px;
+        color: black;
+        padding: 5px 5px 5px 5px;
+    }
+
+        .QL-DanhMucSach div a:hover {
+            background-color: #ddd;
+            float: right;
+            height: 20px;
+            width: 150px;
+            border-radius: 2px;
+            height: 20px;
+            padding: 5px 5px 5px 5px;
+            color: black;
+        }
+
+
+    .QL-DanhMucSach > table {
+        border-collapse: collapse;
+        border: 1px solid #ddd;
+    }
+
+        .QL-DanhMucSach > table > thead {
+            border-collapse: collapse;
+            border: 1px solid #ddd;
+        }
+
+            .QL-DanhMucSach > table > thead tr {
+                background: #eee;
+                vertical-align: middle;
+                text-align: center;
+            }
+
+        .QL-DanhMucSach > table td {
+            padding-top: 5px;
+            text-align: center;
+        }
+
+            .QL-DanhMucSach > table td > a {
+                font-size: 25px;
+            }
+
+.XuLi-DMS {
+    float: right;
+}
+
+    .XuLi-DMS input[type=submit] {
+        padding: 12px 12px 12px 12px;
+        background-color: #d42020;
+        line-height: 1.5px;
+        font-size: 15px;
+        border-radius: 3px;
+        border-color: red;
+        color: white;
+    }
+
+    .XuLi-DMS a {
+        background-color: #f0f0f1;
+        font-size: 15px;
+        border-radius: 3px;
+        padding: 5px 5px 5px 5px;
+    }
+
+.frm-ThemDanhMucSach table {
+    width: 100%;
+}
+
+    .frm-ThemDanhMucSach table td {
+        padding: 15px;
+        font-size: 14px;
+    }
+
+.frm-ThemDanhMucSach input[type=text] {
+    height: 25px;
+    width: 300px;
+}
+
+.frm-ThemDanhMucSach textarea {
+    height: 50px;
+    width: 300px;
+}
+
+.frm-ThemDanhMucSach {
+    border-bottom: solid 1px;
+}
+
+.Edit-DMS h1 {
+    border-bottom: solid 1px;
+    padding: 5px 5px 5px 5px;
+}
+
+.Edit-DMS a {
+    background-color: #f0f0f1;
+    font-size: 15px;
+    border-radius: 3px;
+}
+
+.Edit-DMS table {
+    width: 100%;
+    padding: 10px;
+    border-bottom: solid 1px;
+}
+
+    .Edit-DMS table td {
+        padding: 15px;
+        font-size: 14px;
+    }
+
+.Edit-DMS input[type=text] {
+    height: 25px;
+    width: 300px;
+}
+
+.Edit-DMS textarea {
+    height: 50px;
+    width: 300px;
+}
+
+.XL-Edit-DMS input[type=submit] {
+    float: right;
+    background-color: #d42020;
+    height: 25px;
+    width: 100px;
+    font-size: 15px;
+    border-radius: 5px;
+    color: white;
+}
+
+.frm-ThemDanhMucBaiViet table {
+    width: 100%;
+}
+
+    .frm-ThemDanhMucBaiViet table td {
+        padding: 15px;
+        font-size: 14px;
+    }
+
+        .frm-ThemDanhMucBaiViet input[type=text] {
+            height: 25px;
+            width: 300px;
+        }
+
+            .frm-ThemDanhMucBaiViet textarea {
+                height: 50px;
+                width: 300px;
+            }
+
+                .frm-ThemDanhMucBaiViet {
+                    border-bottom: solid 1px;
+                }

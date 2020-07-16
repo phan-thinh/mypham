@@ -1,0 +1,21 @@
+﻿@using ShopMyPham.Models;
+@model List<BaiViet>
+@{
+    Layout = "~/Views/_LayoutTrangChu.cshtml";
+    ViewBag.Title = "Liên hệ";
+}
+@section Meta{
+
+    <meta property="og:title" content="lien-he" />
+    <meta property="og:description" content="lien-he" />
+    <meta name="keywords" content="Liên hệ" />
+    <meta name="description" content="Liên hệ" />
+}
+<div class="LienHe" style="margin-left:2%;">
+    @foreach (var item in Model)
+    {
+        <h1 style="border-bottom:solid 1px;padding:5px 5px 5px 5px;">@item.TenBaiViet</h1><br />
+        @Html.Raw(@item.NoiDung)
+    }
+</div>
+

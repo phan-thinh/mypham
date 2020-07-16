@@ -1,0 +1,83 @@
+﻿@using ShopMyPham.Models
+@model List<DonHang>
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/_LayoutTrangAd.cshtml";
+}
+<h1>Chỉnh Sửa Trang Thống Kê</h1><br /><br />
+<form action="/ThongKe/Hoadonthangthanhtoan" method="post" enctype="multipart/form-data">
+    <div class="frm-ThemSach">
+
+        <table>
+
+            @foreach (var item in Model)
+
+            {
+                <tbody>
+
+
+                    <tr>
+                        <td>Mã Hóa Đơn:</td>
+                        <td><input type="text" name="MaHoaDon" id="MaHoaDon" value="@item.MaDonHang" /></td>
+                    </tr>
+                    <tr>
+                        <td>Mã Khách Hàng:</td>
+                        <td><input type="text" name="MaKhachHang" id="MaKhachHang" value="@item.MaKH" /></td>
+                    </tr>
+                    <tr>
+                        <td>Tên Khách Hàng:</td>
+                        <td><input type="text" name="TenKhachHang" id="TenKhachHang" value="@item.TenNguoiNhan" /></td>
+                    </tr>
+
+                    <tr>
+                        <td>Điện Thoại:</td>
+                        <td><input type="text" name="DienThoai" id="DienThoai" value="@item.DienThoaiNhan" /></td>
+                    </tr>
+                    <tr>
+                        <td>Địa Chỉ:</td>
+                        <td><input type="text" name="DiaChi" id="DiaChi" value="@item.DiaChiGH" /></td>
+                    </tr>
+                    <tr>
+                        <td>Đơn Giá:</td>
+                        <td><input type="number" min="100000" required name="DonGia" id="DonGia" value="@item.TriGia" /></td>
+                    </tr>
+                    <tr>
+                        <td>Ngày Đặt:</td>
+                        <td><input type="text" name="NgayDat" id="NgayDat" value="@item.NgayDat" /></td>
+                    </tr>
+                    <tr>
+                        <td>Ngày Giao:</td>
+                        <td><input type="text" name="NgayGiao" id="NgayGiao" value="@item.NgayGiao" /></td>
+                    </tr>
+                    <tr>
+                        <td>Trạng Thái:</td>
+                        <td>
+                            <select id="TinhTrangGiaoHang" class="form-control" name="TinhTrangGiaoHang" required>
+                                <option value="@item.TinhTrangGiaoHang">@item.TinhTrangGiaoHang</option>
+                                <option value="True">True</option>
+                                <option value="False">False</option>
+
+                            </select>
+                        </td>
+                    </tr>
+
+                </tbody>
+            }
+        </table>
+    </div>
+    <div id="btn-ThemSach">
+        <input type="submit" onclick="SubEdit()" ; value="Lưu dữ liệu" id="Sub-Edit" />
+    </div>
+</form> 
+<script type="text/javascript">
+    function SubEdit() {
+        var MaHoaDon = $('#MaHoaDon').val();
+        var TinhTrangGiaoHang = $('#TinhTrangGiaoHang').val();
+        $.ajax({
+            url: "/ThongKe/CapNhatEditThongKe",
+            data: { MaHoaDon: MaHoaDon, TinhTrangGiaoHang: TinhTrangGiaoHang },
+            type: "POST",
+           
+        });
+    }
+</script>

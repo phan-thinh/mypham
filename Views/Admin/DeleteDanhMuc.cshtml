@@ -1,0 +1,50 @@
+﻿@model ShopMyPham.Models.LoaiNuocHoa
+@{
+    ViewBag.Title = "DeleteDanhMuc";
+    Layout = "~/Views/_LayoutTrangAd.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+
+    @Html.AntiForgeryToken()
+    <div class="w3-container w3-brown">
+        <h2>Xóa Loại Nước Hoa</h2>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td style="display:none;"><h3>STT</h3></td>
+                <td><h3>STT</h3></td>
+                <td><h3>Tên danh mục</h3></td>
+                <td><h3>Slug</h3></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(model => model.STT)
+                </td>
+                <td>  @Html.DisplayFor(model => model.TenLoaiNuocHoa)</td>
+
+                <td>
+                    @Html.DisplayFor(model => model.MetaTitle)
+                </td>
+
+
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="div-btn">
+        <a id="button" class="btnxoa" href="/Admin/DanhMucLoaiNuocHoa">Quay lại</a>
+        <input id="button" class="btnxoa" type="submit" onclick="xoa()" value="Xóa" />
+    </div>
+
+}
+
+
+
+
+

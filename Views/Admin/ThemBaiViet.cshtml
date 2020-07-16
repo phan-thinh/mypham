@@ -1,0 +1,58 @@
+﻿@{
+    Layout = "~/Views/_LayoutTrangAd.cshtml";
+}
+@using ShopMyPham.Models;
+@model List<DanhMuc>
+
+<form action="/Admin/ThemBaiViet" method="post" enctype="multipart/form-data">
+    <div class="frm-ThemBaiViet">
+        <h1 style="border-bottom:1px solid; padding:5px 5px 5px 5px;">Tạo bài viết</h1>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="td1">Tên bài viết:</td>
+                    <td><input type="text" required id="TenBaiViet" name="TenBaiViet" placeholder="Tên danh mục nước hoa" /></td>
+                </tr>
+                <tr>
+                    <td class="td1">Danh mục:</td>
+                    <td>@Html.DropDownList("ID")</td>
+                </tr>
+                <tr>
+                    <td class="td1">Meta Keywords:</td>
+                    <td><textarea required id="MetaKeywords" name="MetaKeywords" placeholder="Từ khóa"></textarea></td>
+                </tr>
+                <tr>
+                    <td class="td1">Meta Description:</td>
+                    <td><textarea required id="MetaDescription" name="MetaDescription" placeholder="Mô tả danh mục nước hoa"></textarea></td>
+                </tr>
+                <tr>
+                    <td class="td1">Title:</td>
+                    <td><input type="text" required id="Title" name="Title" placeholder="Tiêu đề" /></td>
+                </tr>
+                <tr>
+                    <td class="td1">Meta Title:</td>
+                    <td><textarea required id="MetaTitle" name="MetaTitle" placeholder="Mo-ta-tieu-de"></textarea></td>
+                </tr>
+                <tr>
+                    <td class="td1">Ảnh đại diện:</td>
+                    <td><input style="background: none;border: 0;" type="file" name="AnhDaiDien" id="AnhDaiDien" value="Chọn Đường Dẫn Ảnh" /></td>
+                </tr>
+                <tr>
+                    <td class="td1">Mô tả:</td>
+                    <td>
+                        <textarea id="NoiDung" name="NoiDung"></textarea>
+                        <script>
+                            CKEDITOR.replace("NoiDung");
+                        </script>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br />
+    <div class="XuLi-BaiViet">
+        <a href="/Admin/BaiViet">Trở lại</a> <input type="submit" value="Tạo" name="Sub-Tao" id="Sub-Tao" />
+    </div>
+</form>
+

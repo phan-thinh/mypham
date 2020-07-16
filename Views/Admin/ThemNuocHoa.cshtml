@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "ThemNuocHoa";
+    Layout = "~/Views/_LayoutTrangAd.cshtml";
+}
+<div style="text-align: center;font-size: 18px;    background: #eee;"><i class="fa fa-plus-square" aria-hidden="true"></i> Thêm Mới</div>
+<form action="/Admin/ThemNuocHoa" method="post" enctype="multipart/form-data">
+    <div class="frm-ThemSach">
+        <table>
+            <tbody>
+                <tr>
+                    <td>Từ Khóa:</td>
+                    <td><input type="text" required name="Keywords" id="Keywords" /></td>
+                </tr>
+                <tr>
+                    <td>Tên nước hoa:</td>
+                    <td><input type="text" required name="TenNuocHoa" id="TenNuocHoa" /></td>
+                </tr>
+                <tr>
+                    <td>Giá Bán:</td>
+                    <td><input type="number" min="100000" required name="Giaban" id="GiaBan" /></td>
+                </tr>
+                <tr>
+                    <td>Mô Tả:</td>
+                    <td><input type="text"  required name="MoTa" id="MoTa" /></td>
+                </tr>
+                <tr>
+                    <td>Ảnh Bìa:</td>
+                    <td><input style="background: none;border: 0;" type="file" name="AnhBia" id="AnhBia" value="Chọn Đường Dẫn Ảnh" /></td>
+                </tr>
+                <tr>
+                    <td>Số Lượng:</td>
+                    <td><input type="number" min="1" required name="SoLuong" id="SoLuong" /></td>
+                </tr>
+                <tr>
+                    <td>Mã Nhà Sản Xuất:</td>
+                    <td><input type="number"  required name="MaNSX" id="MaNSX" /></td>
+                </tr>
+                <tr>
+                    <td>Mã Loại Nước Hoa:</td>
+                    <td><input type="number"  required name="MaLoaiNuocHoa" id="MaLoaiNuocHoa" /></td>
+                </tr>
+                <tr>
+                    <td>Mã Loại Nước Sản Xuất:</td>
+                    <td><input type="number"  required name="MaLoaiNuocSanXuat" id="MaLoaiNuocSanXuat" /></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="btn-ThemSach">
+        <input id="sub-ThemNuocHoa" type="submit" value="Thêm" />
+    </div>
+</form>
+
+

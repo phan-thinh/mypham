@@ -1,0 +1,8 @@
+﻿@model  List<Tuple<string, string>>
+@using ShopMyPham.Models;
+@foreach (var item in Model)
+{
+    <ul>
+        <li><a href="/ViewNuocHoa/NuocHoaTheoGia?Gia=@item.Item1"><span class="fa fa-chevron-right"></span> @string.Format("{0:0,0}", @item.Item2) </a></li>
+    </ul>
+}

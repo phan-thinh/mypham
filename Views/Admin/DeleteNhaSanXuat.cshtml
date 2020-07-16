@@ -1,0 +1,40 @@
+﻿@model ShopMyPham.Models.NhaSanXuat
+@{
+    ViewBag.Title = "DeleteNhaSanXuat";
+    Layout = "~/Views/_LayoutTrangAd.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+
+    @Html.AntiForgeryToken()
+    <div class="w3-container w3-brown">
+        <h2>Xóa Nhà Sản Xuất</h2>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td style="display:none;"><h3>Mã NSN </h3></td>
+                <td><h3>Tên Nhà Sản Xuất</h3></td>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+
+                <td>  @Html.DisplayFor(model => model.TenNSX)</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <div class="div-btn">
+        <a id="button" class="btnxoa" href="/Admin/NhaSanXuat">Quay lại</a>
+        <input id="button" class="btnxoa" type="submit" onclick="xoa()" value="Xóa" />
+    </div>
+
+}
+
+
+
+

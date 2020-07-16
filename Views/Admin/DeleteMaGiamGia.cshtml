@@ -1,0 +1,56 @@
+﻿@model ShopMyPham.Models.PhieuGiamGia
+@{
+    ViewBag.Title = "DeleteMaGiamGia";
+    Layout = "~/Views/_LayoutTrangAd.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+
+    @Html.AntiForgeryToken()
+    <div class="w3-container w3-brown">
+        <h2>Xóa Mã Giảm Giá</h2>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td style="display:none;"><h3> Tên Giảm Giá </h3></td>
+
+                <td><h3>Tên giảm giá</h3></td>
+                <td><h3>Thời gian bắt đầu</h3></td>
+                <td><h3>Thời gian kết thúc</h3></td>
+                <td><h3>Mức giảm giá</h3></td>
+                <td><h3>Số lượng</h3></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+
+
+                <td>  @Html.DisplayFor(model => model.TenGiamGia)</td>
+
+                <td>
+                    @Html.DisplayFor(model => model.ThoiGianBatDauGiamGia)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.ThoiGianKetThucGiamGia)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.MucGiamGia)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.SoLuong)
+                </td>
+
+
+            </tr>
+        </tbody>
+    </table>
+    <div class="div-btn">
+        <a id="button" class="btnxoa" href="/Admin/GiamGia">Quay lại</a>
+        <input id="button" class="btnxoa" type="submit" onclick="xoa()" value="Xóa" />
+    </div>
+
+}
+
+

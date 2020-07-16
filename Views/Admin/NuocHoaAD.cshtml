@@ -1,0 +1,50 @@
+﻿@using ShopMyPham.Models;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<NuocHoa>
+@{
+    ViewBag.Title = "NuocHoaAD";
+    Layout = "~/Views/_LayoutTrangAd.cshtml";
+}
+
+<div class="Ad-Content">
+    <h1 style="border-bottom:solid 1px;padding:5px 5px 5px 5px;">
+        Danh Sách Sản Phẩm Nước Hoa
+        <div style="float:right;font-size: 18px; margin-bottom: 10px;">
+            <a href="/Admin/ThemNuocHoa">
+                <i class="fa fa-plus-square" aria-hidden="true">
+                </i> Thêm mới
+            </a>
+        </div>
+    </h1><br />
+    <table>
+        <thead>
+            <tr>
+                <td style="display:none;"><h3></h3></td>
+                <td><h3>Hình ảnh</h3></td>
+                <td><h3>Tên nước hoa</h3></td>
+                <td><h3>Tên danh mục</h3></td>
+                <td><h3>Từ khóa</h3></td>
+                <td><h3>Xử lý</h3></td>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="display:none;">@item.MaNuocHoa</td>
+                    <td><img src="~/Content/Images/product/@item.AnhBia" width="100" height="120" /></td>
+                    <td><a href="/Admin/EditNuocHoa?MaNuocHoa=@item.MaNuocHoa" style="font-size:small;">@item.TenNuocHoa</a></td>
+                    <td>@item.LoaiNuocHoa.TenLoaiNuocHoa</td>
+                    <td>@item.Keywords</td>
+                    <td>
+                        <a href="@Url.Action("DeleteSP","Admin",new { id = item.MaNuocHoa })"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="QL-PhanTrang" style="font-size:initial; text-align:right;">
+    @Html.PagedListPager(Model, page => Url.Action("NuocHoaAD", new { page }))
+</div>
+
